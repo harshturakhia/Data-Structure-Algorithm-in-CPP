@@ -3,147 +3,137 @@ using namespace std;
 
 class node
 {
-    public:
-        int data;
-        node* next;
+public:
+    int data;
+    node *next;
 
     node(int val)
     {
-        data = val;     //adding value to first node
-        next = NULL;    //keeping null to first node address pointer
+        data = val;  // adding value to first node
+        next = NULL; // keeping null to first node address pointer
     }
-
 };
 
-void insertAtTail(node* &head, int val)     //inserting at last of node
-{   
-    node* n = new node(val);        //Creating new node which we have to insert
+void insertAtTail(node *&head, int val) // inserting at last of node
+{
+    node *n = new node(val); // Creating new node which we have to insert
 
-    if(head==NULL)                  //If there are no node linked list
+    if (head == NULL) // If there are no node linked list
     {
         head = n;
         return;
     }
 
-    node* temp = head;          //Creating temporary node
+    node *temp = head; // Creating temporary node
 
-    while(temp -> next != NULL)
+    while (temp->next != NULL)
     {
-        temp = temp -> next;
+        temp = temp->next;
     }
     temp->next = n;
 }
 
-void insertAtHead(node* &head, int val)      //inserting at first of node
+void insertAtHead(node *&head, int val) // inserting at first of node
 {
-    node* n = new node(val);
+    node *n = new node(val);
 
-    n->next=head;                       //n is pointing towards the first node
-    head=n;                             
+    n->next = head; // n is pointing towards the first node
+    head = n;
 }
 
-void display(node* head)                //displaying the node
-{   
-    node* temp = head;                  //creating the temporary node and pointing the value head
+void display(node *head) // displaying the node
+{
+    node *temp = head; // creating the temporary node and pointing the value head
 
-    while(temp != NULL)                //checking condition while
+    while (temp != NULL) // checking condition while
     {
-        cout<<temp->data;
-        cout<< " -> ";
+        cout << temp->data;
+        cout << " -> ";
         temp = temp->next;
     }
-    cout<<"NULL"<<endl;
+    cout << "NULL" << endl;
 }
 
-void count(node* &head)             //Order is O(n)     
+void count(node *&head) // Order is O(n)
 {
-    int count=0;
-    node* temp = head;
+    int count = 0;
+    node *temp = head;
 
-    while(temp != NULL)
+    while (temp != NULL)
     {
         count++;
         temp = temp->next;
     }
-    cout<<endl<<"Count : "<<count;
+    cout << endl
+         << "Count : " << count;
 }
 
-void add(node* &head)        //Order is O(n)    
+void add(node *&head) // Order is O(n)
 {
-    node* temp = head;
+    node *temp = head;
     int sum = 0;
 
-    while(temp != NULL)
+    while (temp != NULL)
     {
         sum = sum + temp->data;
         temp = temp->next;
     }
-    cout<<endl<<"Sum : "<<sum<<endl;
+    cout << endl
+         << "Sum : " << sum << endl;
 }
 
-void maximum(node* &head)
+void maximum(node *&head)
 {
-    node* temp = head;
+    node *temp = head;
     int ans = INT_MIN;
 
-    while(temp != NULL)
+    while (temp != NULL)
     {
-        if(temp->data > ans)
+        if (temp->data > ans)
         {
             ans = temp->data;
-            temp = temp -> next;
+            temp = temp->next;
         }
         else
         {
             temp = temp->next;
         }
     }
-    cout<<"Max : "<< ans <<endl;
+    cout << "Max : " << ans << endl;
 }
 
-int deletetion(node* head, int key)
+int deletetion(node *head, int key)
 {
-    if(head==NULL)
+    if (head == NULL)
         return;
 
-    if(head->next == NULL)
+    if (head->next == NULL)
     {
         deleteAtHead(head);
         return;
     }
-    node* temp = head;
-    // if(head==NULL)              //If node(linked list) is empty
-    // {
-    //     return;
-    // }
-    // if(head->next==NULL)     //If there is only one node in linked list... 
-    // {
-    //     node* toDelete = head;
-    //     head = head->next;
+    node *temp = head;
 
-    //     delete toDelete;
-    // }
-
-    while(temp->next->data != key)
+    while (temp->next->data != key)
     {
         temp = temp->next;
     }
 
-    node* toDelete = temp->next;
-    temp->next=temp->next->next;
+    node *toDelete = temp->next;
+    temp->next = temp->next->next;
 
     delete toDelete;
 }
 
-void deleteAtHead(node* &head)
+void deleteAtHead(node *&head)
 {
-    node* toDelete = head;
+    node *toDelete = head;
     head = head->next;
 
     delete toDelete;
 }
 
-/* 
+/*
 void checkSort(node* &head)
 {
     node* temp = head;
@@ -164,44 +154,44 @@ void checkSort(node* &head)
         }
     }
 }
-*/ 
+*/
 
-bool search(node* head, int key)        //searching for any kind of element in node 
+bool search(node *head, int key) // searching for any kind of element in node
 {
-    node* temp = head;
+    node *temp = head;
 
-    while(temp != NULL)
+    while (temp != NULL)
     {
-        if(temp->data == key)
+        if (temp->data == key)
         {
             return true;
         }
-        temp = temp->next; 
+        temp = temp->next;
     }
     return 0;
 }
 
 int main()
 {
-    node* head = NULL;
-    insertAtTail(head,1);
-    insertAtTail(head,2);
-    insertAtTail(head,3);
-    insertAtTail(head,4);
+    node *head = NULL;
+    insertAtTail(head, 1);
+    insertAtTail(head, 2);
+    insertAtTail(head, 3);
+    insertAtTail(head, 4);
     display(head);
 
-    insertAtHead(head,5);
+    insertAtHead(head, 5);
     display(head);
-    cout<<search(head, 30);
+    cout << search(head, 30);
 
     count(head);
     add(head);
     maximum(head);
-    deletetion(head,4);
-    cout<<"After Deletion : "<<endl;
+    deletetion(head, 4);
+    cout << "After Deletion : " << endl;
     display(head);
     deleteAtHead(head);
-    cout<<"After Deletion at head : "<<endl;
+    cout << "After Deletion at head : " << endl;
     display(head);
 
     //   checkSort(head);
