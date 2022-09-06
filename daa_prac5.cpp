@@ -1,22 +1,21 @@
-
 #include "bits/stdc++.h"
 #define MAX_ELEMENT 50
 using namespace std;
 
 void selectionSort(int arr[], int n)
 {
-    cout<<"Before Sorting : \n";
-    for(int i=0; i<n; i++)
+    cout << "Before Sorting : \n";
+    for (int i = 0; i < n; i++)
     {
-        cout<<arr[i]<<" ";
+        cout << arr[i] << " ";
     }
-    cout<<endl;
+    cout << endl;
 
-    for(int i=0; i<n-1; i++)
+    for (int i = 0; i < n - 1; i++)
     {
-        for(int j=i+1; j<n; j++)
+        for (int j = i + 1; j < n; j++)
         {
-            if(arr[j] < arr[i])
+            if (arr[j] < arr[i])
             {
                 int temp = arr[j];
                 arr[j] = arr[i];
@@ -24,46 +23,44 @@ void selectionSort(int arr[], int n)
             }
         }
     }
-    
-    cout<<"After Sorting : \n";
-    for(int i=0; i<n; i++)
-    {
-        cout<<arr[i]<<" ";
-    }
-    cout<<endl;
 
+    cout << "After Sorting : \n";
+    for (int i = 0; i < n; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
 }
 
 void binarySearch(int arr[], int n)
 {
     selectionSort(arr, n);
-    
+
     int key;
-    cout<<"Enter which element to find : ";
-    cin>>key;
-    
-    int s=0;
-    int e=n;
+    cout << "Enter which element to find : ";
+    cin >> key;
 
-    while (s<=e)
+    int s = 0;
+    int e = n;
+
+    while (s <= e)
     {
-        int mid = (s+e)/2;
+        int mid = (s + e) / 2;
 
-        if(arr[mid]==key)
+        if (arr[mid] == key)
         {
-            cout<<"Array element present at : "<<mid;
+            cout << "Array element present at : " << mid;
             break;
         }
-        else if(arr[mid]<key)
+        else if (arr[mid] < key)
         {
-            s=mid+1;
+            s = mid + 1;
         }
         else
         {
-            e=mid-1;
+            e = mid - 1;
         }
     }
-
 }
 
 int main()
@@ -77,5 +74,4 @@ int main()
     }
 
     binarySearch(arr, n);
-
 }
