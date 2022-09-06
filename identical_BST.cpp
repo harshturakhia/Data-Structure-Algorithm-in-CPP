@@ -20,7 +20,7 @@ bool isIdentical(Node *root1, Node *root2)
 {
     if (root1 == NULL && root2 == NULL)
         return true;
-    else if(root1 == NULL || root2 == NULL)
+    else if (root1 == NULL || root2 == NULL)
         return false;
     else
     {
@@ -67,7 +67,7 @@ int main()
     inOrder(root2);
     cout << endl;
 
-    if (isIdentical(root1, root1))
+    if (isIdentical(root1, root2))
         cout << "Yes, BSTs are identical";
     else
         cout << "No, BSTs are NOT identical";
